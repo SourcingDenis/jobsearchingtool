@@ -1,5 +1,9 @@
-import { JobSearchHub } from '@/components/JobSearchHub'
+'use client'
+
+import { useState } from 'react'
+import { JobSearchHub } from '../components/JobSearchHub'
 
 export default function Home() {
-  return <JobSearchHub />
+  const [isDark, setIsDark] = useState(false)
+  return <JobSearchHub isDark={isDark} />
 } 
