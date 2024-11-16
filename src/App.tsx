@@ -4,11 +4,10 @@ import { ThemeToggle } from './components/ThemeToggle';
 import { CategorySection } from './components/CategorySection';
 import { GoogleIcon } from './components/GoogleIcon';
 import { SearchModifier } from './components/SearchModifier';
-import { LanguageToggle } from './components/LanguageToggle';
 import { HowToUseCards } from './components/HowToUseCards';
 import { searches as originalSearches } from './data/searches';
-import { translations } from './translations';
 import { JobSearchHub } from './components/JobSearchHub';
+import { strings } from './strings';
 
 export default function App() {
   const [isDark, setIsDark] = useState(() => {
@@ -19,14 +18,6 @@ export default function App() {
     return false;
   });
 
-  const [lang, setLang] = useState(() => {
-    if (typeof window !== 'undefined') {
-      return localStorage.getItem('lang') || 'en';
-    }
-    return 'en';
-  });
-
-  const t = translations[lang as keyof typeof translations];
   const [jobTitles, setJobTitles] = useState<string[]>([]);
   const [searches, setSearches] = useState(originalSearches);
 
@@ -34,10 +25,6 @@ export default function App() {
     document.documentElement.classList.toggle('dark', isDark);
     localStorage.setItem('theme', isDark ? 'dark' : 'light');
   }, [isDark]);
-
-  useEffect(() => {
-    localStorage.setItem('lang', lang);
-  }, [lang]);
 
   useEffect(() => {
     const updatedSearches = originalSearches.map(search => ({
@@ -95,17 +82,17 @@ export default function App() {
                   isDark ? 'text-white' : 'text-white'
                 }`}>
                   <span className="inline-flex items-center gap-4">
-                    {t.howToUse}
+                    {strings.howToUse}
                     <Sparkles className="w-10 h-10 text-yellow-400 animate-pulse" />
                   </span>
                 </h2>
                 <p className={`mt-4 text-xl max-w-2xl mx-auto ${
                   isDark ? 'text-gray-300' : 'text-white'
                 }`}>
-                  {t.disclaimer}
+                  {strings.disclaimer}
                 </p>
               </div>
-              <HowToUseCards translations={t} />
+              <HowToUseCards translations={strings} />
             </div>
           </div>
 
@@ -118,11 +105,11 @@ export default function App() {
               currentTitles={jobTitles.map(t => t.replace('.', ' '))}
               onTitlesChange={titles => setJobTitles(titles.map(t => t.replace(' ', '.')))}
               translations={{
-                customizeSearchTitles: t.customizeJobTitles,
-                addNewTitle: t.addNewTitle,
-                add: t.add,
-                suggestedTitles: t.suggestedTitles,
-                minTitlesRequired: t.minTitlesRequired
+                customizeSearchTitles: strings.customizeJobTitles,
+                addNewTitle: strings.addNewTitle,
+                add: strings.add,
+                suggestedTitles: strings.suggestedTitles,
+                minTitlesRequired: strings.minTitlesRequired
               }}
               minTitlesRequired={1}
             />
@@ -134,11 +121,11 @@ export default function App() {
                   category={category}
                   searches={searches}
                   onExecuteSearch={executeSearch}
-                  executeButtonText={t.executeSearch}
+                  executeButtonText={strings.executeSearch}
                   currentTitlesCount={jobTitles.length}
                   translations={{
-                    categories: t.categories,
-                    searches: t.searches
+                    categories: strings.categories,
+                    searches: strings.searches
                   }}
                 />
               ))}
@@ -155,7 +142,7 @@ export default function App() {
         <div className="max-w-7xl mx-auto px-6 py-12 sm:px-8 lg:px-12">
           <div className="flex flex-col items-center space-y-6">
             <p className="text-lg text-gray-600 dark:text-gray-400 flex items-center gap-2">
-              {t.madeWith} <Heart className="w-5 h-5 text-red-500 animate-pulse" /> {t.by}{' '}
+              {strings.madeWith} <Heart className="w-5 h-5 text-red-500 animate-pulse" /> {strings.by}{' '}
               <a 
                 href="https://linkedin.com/in/sourcingdenis/" 
                 target="_blank" 
@@ -166,7 +153,7 @@ export default function App() {
               </a>
             </p>
             <p className="text-base text-gray-500 dark:text-gray-400 text-center max-w-2xl">
-              {t.allSearchesFrom}{' '}
+              {strings.allSearchesFrom}{' '}
               <a 
                 href="https://linkedin.com/in/talentsourcertechnologysourcingrecruiter/" 
                 target="_blank" 
@@ -181,7 +168,6 @@ export default function App() {
       </footer>
 
       <ThemeToggle isDark={isDark} toggleTheme={() => setIsDark(!isDark)} />
-      <LanguageToggle currentLang={lang} onLanguageChange={setLang} />
     </div>
   );
 }

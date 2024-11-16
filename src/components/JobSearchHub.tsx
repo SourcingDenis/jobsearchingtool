@@ -56,9 +56,9 @@ export function JobSearchHub({ isDark }: JobSearchHubProps) {
         >
           <div className="w-[100px] h-[100px] relative">
             <img
-              src="https://i.postimg.cc/MHY0z4Zz/Google-G-logo-svg.png"
+              src="/google-logo.png"
               alt="Google Logo"
-              className={`w-full h-full object-contain rounded-lg shadow-lg ${
+              className={`w-full h-full object-contain rounded-lg ${
                 isDark ? 'brightness-90' : ''
               }`}
             />
