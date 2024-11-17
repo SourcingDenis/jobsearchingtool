@@ -1,38 +1,71 @@
 <!doctype html>
 <html lang="en">
   <head>
+    <!-- Character Encoding -->
     <meta charset="UTF-8" />
+
+    <!-- Favicon and Icons -->
     <link rel="icon" type="image/svg+xml" href="/vite.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="By recruiting professionals for job seekers" />
-    <meta name="keywords" content="jobs, career, recruitment, job search, employment" />
-    <meta name="author" content="@sourcingdenis" />
-    <meta name="theme-color" content="#ffffff" />
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
     <link rel="icon" sizes="32x32" href="/favicon-32x32.png" />
     <link rel="icon" sizes="16x16" href="/favicon-16x16.png" />
     <link rel="manifest" href="/site.webmanifest" />
-    
-    <title>Google X-ray for Job Search</title>
-    <meta property="og:title" content="Google X-ray Tool" />
-    <meta property="og:description" content="Google X-ray Tool will assist you on finding your next career opportunity" />
+
+    <!-- Viewport for Responsive Design -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="Find your dream job for free! Our tool uses advanced Google searches to discover the latest job listings from [Target Job Site]. Customize keywords and start your job hunt today." />
+    <meta name="keywords" content="free job finder tool, advanced Google job search, customizable job search, find jobs on [Target Job Site], job search engine, real-time job listings, personalized job search, secure job search tool, SEO-optimized job finder, job search tool, career opportunities, employment search" />
+    <meta name="author" content="@sourcingdenis" />
+    <meta name="theme-color" content="#ffffff" />
+
+    <!-- Page Title -->
+    <title>Google X-ray Job Search Tool | Find Jobs Online</title>
+
+    <!-- Open Graph Meta Tags for Social Media -->
+    <meta property="og:title" content="Google X-ray Job Search Tool" />
+    <meta property="og:description" content="Find your dream job for free! Our tool uses advanced Google searches to discover the latest job listings online. Customize keywords and start your job hunt today." />
     <meta property="og:image" content="https://search.sourcingdenis.live/og-image.jpeg" />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
     <meta property="og:image:alt" content="Google X-ray for Job Search" />
     <meta property="og:url" content="https://search.sourcingdenis.live" />
     <meta property="og:type" content="website" />
+
+    <!-- Twitter Card Meta Tags -->
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="Google X-ray for Job Search" />
-    <meta name="twitter:description" content="Google X-ray Tool will assist you on finding your next career opportunit" />
+    <meta name="twitter:title" content="Google X-ray Job Search Tool" />
+    <meta name="twitter:description" content="Find your dream job for free! Our tool uses advanced Google searches to discover the latest job listings online. Customize keywords and start your job hunt today." />
     <meta name="twitter:image" content="https://search.sourcingdenis.live/og-image.jpeg" />
-    <meta name="twitter:image:alt" content="Google X-ray Tool will assist you on finding your next career opportunity" />
+    <meta name="twitter:image:alt" content="Google X-ray Job Search Tool assisting you in finding your next career opportunity" />
+
+    <!-- Structured Data (JSON-LD) for SEO -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "WebSite",
+        "name": "Google X-ray Job Search Tool",
+        "url": "https://search.sourcingdenis.live",
+        "description": "Find your dream job for free! Our tool uses advanced Google searches to discover the latest job listings from [Target Job Site]. Customize keywords and start your job hunt today.",
+        "author": {
+          "@type": "Organization",
+          "name": "Sourcing Denis",
+          "url": "https://search.sourcingdenis.live"
+        },
+        "potentialAction": {
+          "@type": "SearchAction",
+          "target": "https://search.sourcingdenis.live/search?keywords={keywords}",
+          "query-input": "required name=keywords"
+        }
+      }
+    </script>
   </head>
   <body>
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
     <noscript>
-      <p>Please enable JavaScript to use the search Hub.</p>
+      <p>Please enable JavaScript to use the Search Hub.</p>
     </noscript>
   </body>
 </html>
