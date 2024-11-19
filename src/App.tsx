@@ -144,7 +144,7 @@ export default function App() {
             <p className="text-lg text-gray-600 dark:text-gray-400 flex items-center gap-2">
               {strings.madeWith} <Heart className="w-5 h-5 text-red-500 animate-pulse" /> {strings.by}{' '}
               <a 
-                href="https://linkedin.com/in/sourcingdenis/" 
+                href="https://sourcingdenis.live" 
                 target="_blank" 
                 rel="noopener noreferrer"
                 className="text-indigo-600 dark:text-indigo-400 hover:underline font-medium"
