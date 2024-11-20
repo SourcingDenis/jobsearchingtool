@@ -1,0 +1,24 @@
+User-agent: *
+Allow: /
+
+# Sitemap location
+Sitemap: https://search.sourcingdenis.live/sitemap.xml
+
+# Prevent caching of search results
+Disallow: /search?*
+
+# Rate limiting
+Crawl-delay: 1
+
+# Block common bots that might overload the service
+User-agent: AhrefsBot
+Crawl-delay: 10
+
+User-agent: SemrushBot
+Crawl-delay: 10
+
+User-agent: MJ12bot
+Disallow: /
+
+User-agent: PetalBot
+Disallow: / 
