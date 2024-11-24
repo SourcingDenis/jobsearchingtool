@@ -20,6 +20,7 @@ export default function App() {
 
   const [jobTitles, setJobTitles] = useState<string[]>([]);
   const [searches, setSearches] = useState(originalSearches);
+  const [isMajorPlatformsExpanded, setIsMajorPlatformsExpanded] = useState(true);
 
   useEffect(() => {
     document.documentElement.classList.toggle('dark', isDark);
@@ -122,20 +123,22 @@ export default function App() {
             />
 
             <div className="space-y-12 mt-12">
-              {categories.map(category => (
-                <CategorySection
-                  key={category}
-                  category={category}
-                  searches={searches}
-                  onExecuteSearch={executeSearch}
-                  executeButtonText={strings.executeSearch}
-                  currentTitlesCount={jobTitles.length}
-                  translations={{
-                    categories: strings.categories,
-                    searches: strings.searches
-                  }}
-                />
-              ))}
+              <div className="grid gap-8">
+                {categories.map((category) => (
+                  <CategorySection
+                    key={category}
+                    category={category}
+                    searches={searches}
+                    onExecuteSearch={executeSearch}
+                    executeButtonText={strings.executeSearch}
+                    currentTitlesCount={jobTitles.length}
+                    translations={strings}
+                    isMajorPlatformsExpanded={isMajorPlatformsExpanded}
+                    onMajorPlatformsExpand={setIsMajorPlatformsExpanded}
+                    shouldShow={category === "Major Job Platforms" || isMajorPlatformsExpanded}
+                  />
+                ))}
+              </div>
             </div>
           </div>
         </div>
