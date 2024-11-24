@@ -50,11 +50,15 @@ export function SearchCard({
           <button
             onClick={() => onExecute(query)}
             disabled={isDisabled}
-            className="flex items-center gap-2 bg-indigo-600 hover:bg-indigo-700 dark:bg-indigo-500 dark:hover:bg-indigo-600 text-white font-medium py-2 px-4 rounded-lg transition-all duration-300 hover:shadow-md hover:scale-[1.02] active:scale-[0.98] disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100 disabled:hover:shadow-none"
-            title={isDisabled ? `Requires at least ${minTitlesRequired} job titles` : ''}
+            className={`inline-flex items-center gap-2 px-4 py-2 text-sm font-medium rounded-md 
+              ${isDisabled 
+                ? 'bg-gray-100 text-gray-400 cursor-not-allowed dark:bg-gray-800 dark:text-gray-500' 
+                : 'bg-indigo-600 text-white hover:bg-indigo-700 dark:bg-indigo-500 dark:hover:bg-indigo-600'
+              } transition-colors duration-200`}
+            title={isDisabled ? 'Add job titles to enable search' : 'Opens in new tab'}
           >
-            <ExternalLink className="w-4 h-4" />
             <span>{executeButtonText}</span>
+            <ExternalLink className="h-4 w-4" />
           </button>
         </div>
       </div>
@@ -83,11 +87,15 @@ export function SearchCard({
         <button
           onClick={() => onExecute(query)}
           disabled={isDisabled}
-          className="w-full flex items-center justify-center gap-3 bg-indigo-600 hover:bg-indigo-700 dark:bg-indigo-500 dark:hover:bg-indigo-600 text-white font-medium py-3 px-6 rounded-lg transition-all duration-300 hover:shadow-lg hover:scale-[1.02] active:scale-[0.98] disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100 disabled:hover:shadow-none"
-          title={isDisabled ? `Requires at least ${minTitlesRequired} job titles` : ''}
+          className={`inline-flex items-center gap-2 px-4 py-2 text-sm font-medium rounded-md 
+            ${isDisabled 
+              ? 'bg-gray-100 text-gray-400 cursor-not-allowed dark:bg-gray-800 dark:text-gray-500' 
+              : 'bg-indigo-600 text-white hover:bg-indigo-700 dark:bg-indigo-500 dark:hover:bg-indigo-600'
+            } transition-colors duration-200 group`}
+          title={isDisabled ? 'Add job titles to enable search' : 'Opens in new tab'}
         >
-          <ExternalLink className="w-5 h-5 transition-transform duration-200 group-hover:rotate-12" />
           <span>{executeButtonText}</span>
+          <ExternalLink className="h-4 w-4 transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
         </button>
       </div>
     </div>

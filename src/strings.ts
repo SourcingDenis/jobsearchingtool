@@ -17,7 +17,7 @@ export const strings = {
   minTitlesRequired: "Add at least one job title to enable searches",
   madeWith: "Made with",
   by: "by",
-  allSearchesFrom: "All search queries are courtesy of",
+  allSearchesFrom: "Majority of search queries are courtesy of",
   categories: {
     "Essential Searches": "Essential Searches",
     "Remote Work": "Remote Work",
@@ -28,7 +28,7 @@ export const strings = {
     "Creative & Design": "Creative & Design",
     "Alternative Sources": "Alternative Sources"
   },
-  searches: {
+  searches: {     
     "Basic Job Search": "Basic Job Search",
     "Detailed Job Search": "Detailed Job Search",
     "Recent Job Openings": "Recent Job Openings",

@@ -38,7 +38,14 @@ export default function App() {
   }, [jobTitles]);
 
   const executeSearch = (query: string) => {
-    window.open(`https://www.google.com/search?q=${encodeURIComponent(query)}`, '_blank');
+    const searchWindow = window.open(
+      `https://www.google.com/search?q=${encodeURIComponent(query)}`,
+      '_blank',
+      'noopener,noreferrer'
+    );
+    if (searchWindow) {
+      searchWindow.opener = null;
+    }
   };
 
   const categories = [...new Set(searches.map(s => s.category))];
