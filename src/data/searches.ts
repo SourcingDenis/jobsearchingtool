@@ -4,30 +4,87 @@ export interface Search {
   category: string;
   minTitles?: number;
   description?: string;
+  layout?: string;
 }
 
 export const searches: Search[] = [
-  // Essential Searches
+  // Major Job Platforms
   {
-    title: "Basic Job Search",
-    query: '{TITLES} "job|jobs|career|careers"',
-    category: "Essential Searches",
+    title: "Greenhouse",
+    query: 'site:boards.greenhouse.io {TITLES}',
+    category: "Major Job Platforms",
     minTitles: 1,
-    description: "Simple and effective search for job listings across all platforms"
+    description: "Search positions on Greenhouse job boards"
   },
   {
-    title: "Detailed Job Search",
-    query: '{TITLES} (intitle:job | intitle:jobs | intitle:career | intitle:careers | "apply now" | "add to job" | "share|save|email|text this job" | "job opening|openings" | "of|in the following states" | "remote but *")',
-    category: "Essential Searches",
+    title: "Lever",
+    query: 'site:jobs.lever.co {TITLES}',
+    category: "Major Job Platforms",
     minTitles: 1,
-    description: "Comprehensive search covering various job listing formats"
+    description: "Find opportunities posted on Lever"
   },
   {
-    title: "Recent Job Openings",
-    query: '"job opening|openings" {TITLES}',
-    category: "Essential Searches",
+    title: "Ashby",
+    query: 'site:jobs.ashbyhq.com {TITLES}',
+    category: "Major Job Platforms",
     minTitles: 1,
-    description: "Focus on newly posted positions"
+    description: "Explore positions listed on Ashby"
+  },
+  {
+    title: "Workable",
+    query: 'site:apply.workable.com {TITLES}',
+    category: "Major Job Platforms",
+    minTitles: 1,
+    layout: "list",
+    description: "Search across companies using Workable's ATS"
+  },
+  {
+    title: "SmartRecruiters",
+    query: 'site:jobs.smartrecruiters.com {TITLES}',
+    category: "Major Job Platforms",
+    minTitles: 1,
+    layout: "list",
+    description: "Find positions on SmartRecruiters platform"
+  },
+  {
+    title: "Breezy HR",
+    query: 'site:jobs.breezy.hr {TITLES}',
+    category: "Major Job Platforms",
+    minTitles: 1,
+    layout: "list",
+    description: "Search through Breezy HR's recruiting platform"
+  },
+  {
+    title: "JazzHR",
+    query: 'site:apply.jobot.com {TITLES}',
+    category: "Major Job Platforms",
+    minTitles: 1,
+    layout: "list",
+    description: "Find jobs posted through JazzHR's ATS"
+  },
+  {
+    title: "Recruitee",
+    query: 'site:jobs.recruitee.com {TITLES}',
+    category: "Major Job Platforms",
+    minTitles: 1,
+    layout: "list",
+    description: "Search positions on Recruitee's platform"
+  },
+  {
+    title: "iCIMS",
+    query: 'site:careers.icims.com {TITLES}',
+    category: "Major Job Platforms",
+    minTitles: 1,
+    layout: "list",
+    description: "Find opportunities on iCIMS career sites"
+  },
+  {
+    title: "BambooHR",
+    query: 'site:bamboohr.com/jobs {TITLES}',
+    category: "Major Job Platforms",
+    minTitles: 1,
+    layout: "list",
+    description: "Search jobs posted through BambooHR"
   },
 
   // Remote Work
@@ -44,29 +101,6 @@ export const searches: Search[] = [
     category: "Remote Work",
     minTitles: 1,
     description: "Remote positions specifically for US-based workers"
-  },
-
-  // Major Job Platforms
-  {
-    title: "Greenhouse Jobs",
-    query: 'site:boards.greenhouse.io {TITLES}',
-    category: "Major Job Platforms",
-    minTitles: 1,
-    description: "Search positions on Greenhouse job boards"
-  },
-  {
-    title: "Lever Jobs",
-    query: 'site:jobs.lever.co {TITLES}',
-    category: "Major Job Platforms",
-    minTitles: 1,
-    description: "Find opportunities posted on Lever"
-  },
-  {
-    title: "Ashby Jobs",
-    query: 'site:jobs.ashbyhq.com {TITLES}',
-    category: "Major Job Platforms",
-    minTitles: 1,
-    description: "Explore positions listed on Ashby"
   },
 
   // Tech Industry
@@ -154,7 +188,28 @@ export const searches: Search[] = [
     description: "Design roles focusing on user experience"
   },
 
-  // Domain-Specific
+  // Alternative Sources
+  {
+    title: "Basic Job Search",
+    query: '{TITLES} "job|jobs|career|careers"',
+    category: "Alternative Sources",
+    minTitles: 1,
+    description: "Simple and effective search for job listings across all platforms"
+  },
+  {
+    title: "Detailed Job Search",
+    query: '{TITLES} (intitle:job | intitle:jobs | intitle:career | intitle:careers | "apply now" | "add to job" | "share|save|email|text this job" | "job opening|openings" | "of|in the following states" | "remote but *")',
+    category: "Alternative Sources",
+    minTitles: 1,
+    description: "Comprehensive search covering various job listing formats"
+  },
+  {
+    title: "Recent Job Openings",
+    query: '"job opening|openings" {TITLES}',
+    category: "Alternative Sources",
+    minTitles: 1,
+    description: "Focus on newly posted positions"
+  },
   {
     title: ".CO Domain Jobs",
     query: 'site:co {TITLES} "job|jobs|career|careers"',

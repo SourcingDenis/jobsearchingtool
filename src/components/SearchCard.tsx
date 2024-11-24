@@ -12,6 +12,7 @@ interface SearchCardProps {
   isDisabled?: boolean;
   minTitlesRequired?: number;
   currentTitlesCount: number;
+  layout?: string;
 }
 
 export function SearchCard({ 
@@ -21,10 +22,44 @@ export function SearchCard({
   onExecute, 
   executeButtonText,
   minTitlesRequired = 1,
-  currentTitlesCount
+  currentTitlesCount,
+  layout
 }: SearchCardProps) {
   const icon = searchIcons[title] || searchIcons['Default'];
   const isDisabled = currentTitlesCount < minTitlesRequired;
+
+  if (layout === "list") {
+    return (
+      <div className={`flex items-center justify-between py-4 ${isDisabled ? 'opacity-50' : ''} ${
+        description ? 'border-b border-gray-200 dark:border-gray-700' : ''
+      }`}>
+        <div className="flex items-center gap-4 flex-1">
+          <div className="p-2 rounded-lg bg-indigo-50 dark:bg-indigo-900/30">
+            {icon}
+          </div>
+          <div className="flex-1 min-w-0">
+            <h3 className="text-lg font-medium text-gray-800 dark:text-gray-200 mb-1">{title}</h3>
+            <div className="p-2 rounded bg-gray-50 dark:bg-gray-900/50">
+              <p className="text-sm text-gray-600 dark:text-gray-400 font-mono overflow-hidden text-ellipsis whitespace-nowrap">
+                {query}
+              </p>
+            </div>
+          </div>
+        </div>
+        <div className="ml-4 flex-shrink-0">
+          <button
+            onClick={() => onExecute(query)}
+            disabled={isDisabled}
+            className="flex items-center gap-2 bg-indigo-600 hover:bg-indigo-700 dark:bg-indigo-500 dark:hover:bg-indigo-600 text-white font-medium py-2 px-4 rounded-lg transition-all duration-300 hover:shadow-md hover:scale-[1.02] active:scale-[0.98] disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100 disabled:hover:shadow-none"
+            title={isDisabled ? `Requires at least ${minTitlesRequired} job titles` : ''}
+          >
+            <ExternalLink className="w-4 h-4" />
+            <span>{executeButtonText}</span>
+          </button>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className={`bg-white dark:bg-gray-800 rounded-xl shadow-md transition-all duration-300 hover:shadow-xl transform hover:-translate-y-1 ${isDisabled ? 'opacity-50' : ''}`}>

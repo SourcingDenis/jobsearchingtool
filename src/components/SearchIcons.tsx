@@ -1,68 +1,57 @@
 import React from 'react';
-import { 
-  FileSearch,
-  Workflow,
-  Clock,
-  Laptop2,
-  Globe2,
-  Building,
-  BookOpen,
-  Building2,
-  Code,
-  Rocket,
-  Bitcoin,
-  BarChart4,
-  LineChart,
-  Banknote,
-  Pill,
-  Microscope,
-  Palette,
-  PenTool,
-  Globe,
-  Server,
-  Network,
-  Briefcase
-} from 'lucide-react';
+
+const EmojiIcon = ({ emoji, className }: { emoji: string, className?: string }) => (
+  <div className={`flex items-center justify-center ${className}`} style={{ fontSize: '1.5rem' }}>
+    {emoji}
+  </div>
+);
 
 export const searchIcons: { [key: string]: React.ReactNode } = {
   // Essential Searches
-  'Basic Job Search': <FileSearch className="w-6 h-6 text-emerald-500" />,
-  'Detailed Job Search': <Workflow className="w-6 h-6 text-orange-500" />,
-  'Recent Job Openings': <Clock className="w-6 h-6 text-blue-500" />,
+  'Basic Job Search': <EmojiIcon emoji="🔍" />,
+  'Detailed Job Search': <EmojiIcon emoji="🔎" />,
+  'Recent Job Openings': <EmojiIcon emoji="⏰" />,
 
   // Remote Work
-  'Remote Jobs': <Laptop2 className="w-6 h-6 text-indigo-500" />,
-  'US Remote Jobs': <Globe2 className="w-6 h-6 text-teal-500" />,
+  'Remote Jobs': <EmojiIcon emoji="🏠" />,
+  'US Remote Jobs': <EmojiIcon emoji="🌎" />,
 
   // Major Job Platforms
-  'Greenhouse Jobs': <Building className="w-6 h-6 text-green-600" />,
-  'Lever Jobs': <BookOpen className="w-6 h-6 text-purple-600" />,
-  'Ashby Jobs': <Building2 className="w-6 h-6 text-blue-600" />,
+  'Greenhouse': <EmojiIcon emoji="🌱" />,
+  'Lever': <EmojiIcon emoji="⚡" />,
+  'Ashby': <EmojiIcon emoji="🏛️" />,
+  'Workable': <EmojiIcon emoji="💼" />,
+  'SmartRecruiters': <EmojiIcon emoji="🎯" />,
+  'Breezy HR': <EmojiIcon emoji="🌬️" />,
+  'JazzHR': <EmojiIcon emoji="🎷" />,
+  'Recruitee': <EmojiIcon emoji="🎨" />,
+  'iCIMS': <EmojiIcon emoji="🏢" />,
+  'BambooHR': <EmojiIcon emoji="🎋" />,
 
   // Tech Industry
-  'Top Tech Companies': <Code className="w-6 h-6 text-blue-600" />,
-  'Tech Startups': <Rocket className="w-6 h-6 text-red-500" />,
-  'Web3 & Crypto': <Bitcoin className="w-6 h-6 text-amber-500" />,
+  'Top Tech Companies': <EmojiIcon emoji="💻" />,
+  'Tech Startups': <EmojiIcon emoji="🚀" />,
+  'Web3 & Crypto': <EmojiIcon emoji="₿" />,
 
   // Finance & Consulting
-  'Big 4 Consulting': <BarChart4 className="w-6 h-6 text-blue-800" />,
-  'Top Consulting': <LineChart className="w-6 h-6 text-indigo-600" />,
-  'Investment Banking': <Building2 className="w-6 h-6 text-blue-700" />,
-  'FinTech': <Banknote className="w-6 h-6 text-green-700" />,
+  'Big 4 Consulting': <EmojiIcon emoji="📊" />,
+  'Top Consulting': <EmojiIcon emoji="📈" />,
+  'Investment Banking': <EmojiIcon emoji="🏦" />,
+  'FinTech': <EmojiIcon emoji="💳" />,
 
   // Healthcare & Pharma
-  'Top Pharma': <Pill className="w-6 h-6 text-red-600" />,
-  'Clinical Research': <Microscope className="w-6 h-6 text-purple-600" />,
+  'Top Pharma': <EmojiIcon emoji="💊" />,
+  'Clinical Research': <EmojiIcon emoji="🔬" />,
 
   // Creative & Design
-  'Creative Agencies': <Palette className="w-6 h-6 text-pink-600" />,
-  'UX/UI Design': <PenTool className="w-6 h-6 text-orange-600" />,
+  'Creative Agencies': <EmojiIcon emoji="🎨" />,
+  'UX/UI Design': <EmojiIcon emoji="✏️" />,
 
   // Alternative Sources
-  '.CO Domain Jobs': <Globe className="w-6 h-6 text-cyan-500" />,
-  '.IO Domain Jobs': <Server className="w-6 h-6 text-red-500" />,
-  'Non-Standard Domains': <Network className="w-6 h-6 text-pink-500" />,
+  '.CO Domain Jobs': <EmojiIcon emoji="🌐" />,
+  '.IO Domain Jobs': <EmojiIcon emoji="⚙️" />,
+  'Non-Standard Domains': <EmojiIcon emoji="🔗" />,
 
   // Default icon
-  'Default': <Briefcase className="w-6 h-6 text-gray-500" />
+  'Default': <EmojiIcon emoji="📝" />
 };
