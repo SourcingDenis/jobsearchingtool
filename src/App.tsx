@@ -20,7 +20,8 @@ export default function App() {
 
   const [jobTitles, setJobTitles] = useState<string[]>([]);
   const [searches, setSearches] = useState(originalSearches);
-  const [isMajorPlatformsExpanded, setIsMajorPlatformsExpanded] = useState(true);
+  const [isBroadSearchesExpanded, setIsBroadSearchesExpanded] = useState(true);
+  const [isMajorPlatformsExpanded, setIsMajorPlatformsExpanded] = useState(false);
 
   useEffect(() => {
     document.documentElement.classList.toggle('dark', isDark);
@@ -124,20 +125,63 @@ export default function App() {
 
             <div className="space-y-12 mt-12">
               <div className="grid gap-8">
-                {categories.map((category) => (
-                  <CategorySection
-                    key={category}
-                    category={category}
-                    searches={searches}
-                    onExecuteSearch={executeSearch}
-                    executeButtonText={strings.executeSearch}
-                    currentTitlesCount={jobTitles.length}
-                    translations={strings}
-                    isMajorPlatformsExpanded={isMajorPlatformsExpanded}
-                    onMajorPlatformsExpand={setIsMajorPlatformsExpanded}
-                    shouldShow={category === "Major Job Platforms" || isMajorPlatformsExpanded}
-                  />
-                ))}
+                {/* Broad Searches section is always first */}
+                <CategorySection
+                  key="Broad Searches"
+                  category="Broad Searches"
+                  searches={searches}
+                  onExecuteSearch={executeSearch}
+                  executeButtonText={strings.executeSearch}
+                  currentTitlesCount={jobTitles.length}
+                  translations={strings}
+                  isAlternativeExpanded={isBroadSearchesExpanded}
+                  onAlternativeExpand={setIsBroadSearchesExpanded}
+                  isMajorPlatformsExpanded={isMajorPlatformsExpanded}
+                  onMajorPlatformsExpand={setIsMajorPlatformsExpanded}
+                  shouldShow={true}
+                  defaultExpanded={true}
+                />
+
+                {/* Major Job Platforms section is always second */}
+                <CategorySection
+                  key="Major Job Platforms"
+                  category="Major Job Platforms"
+                  searches={searches}
+                  onExecuteSearch={executeSearch}
+                  executeButtonText={strings.executeSearch}
+                  currentTitlesCount={jobTitles.length}
+                  translations={strings}
+                  isAlternativeExpanded={isBroadSearchesExpanded}
+                  onAlternativeExpand={setIsBroadSearchesExpanded}
+                  isMajorPlatformsExpanded={isMajorPlatformsExpanded}
+                  onMajorPlatformsExpand={setIsMajorPlatformsExpanded}
+                  shouldShow={true}
+                  defaultExpanded={false}
+                />
+
+                {/* Other sections follow based on expansion state */}
+                {categories
+                  .filter(category => 
+                    category !== "Broad Searches" && 
+                    category !== "Major Job Platforms"
+                  )
+                  .map((category) => (
+                    <CategorySection
+                      key={category}
+                      category={category}
+                      searches={searches}
+                      onExecuteSearch={executeSearch}
+                      executeButtonText={strings.executeSearch}
+                      currentTitlesCount={jobTitles.length}
+                      translations={strings}
+                      isAlternativeExpanded={isBroadSearchesExpanded}
+                      onAlternativeExpand={setIsBroadSearchesExpanded}
+                      isMajorPlatformsExpanded={isMajorPlatformsExpanded}
+                      onMajorPlatformsExpand={setIsMajorPlatformsExpanded}
+                      shouldShow={isMajorPlatformsExpanded || (!isMajorPlatformsExpanded && isBroadSearchesExpanded)}
+                      defaultExpanded={false}
+                    />
+                  ))}
               </div>
             </div>
           </div>

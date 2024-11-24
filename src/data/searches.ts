@@ -181,46 +181,46 @@ export const searches: Search[] = [
     description: "Design roles focusing on user experience"
   },
 
-  // Alternative Sources
+  // Broad Searches
   {
     title: "Basic Job Search",
-    query: '{TITLES} "job|jobs|career|careers"',
-    category: "Alternative Sources",
+    query: '{TITLES}',
+    category: "Broad Searches",
     minTitles: 1,
-    description: "Simple and effective search for job listings across all platforms"
+    description: "Simple search for your job titles"
   },
   {
     title: "Detailed Job Search",
-    query: '{TITLES} (intitle:job | intitle:jobs | intitle:career | intitle:careers | "apply now" | "add to job" | "share|save|email|text this job" | "job opening|openings" | "of|in the following states" | "remote but *")',
-    category: "Alternative Sources",
+    query: '({TITLES}) (job OR jobs OR position OR positions OR career OR careers OR opportunity OR opportunities) (2023 OR 2024)',
+    category: "Broad Searches",
     minTitles: 1,
-    description: "Comprehensive search covering various job listing formats"
+    description: "Comprehensive search with various job-related terms"
   },
   {
     title: "Recent Job Openings",
-    query: '"job opening|openings" {TITLES}',
-    category: "Alternative Sources",
+    query: '{TITLES} (after:2024-01-01)',
+    category: "Broad Searches",
     minTitles: 1,
-    description: "Focus on newly posted positions"
+    description: "Find the most recent job postings"
   },
   {
     title: ".CO Domain Jobs",
     query: 'site:co {TITLES} "job|jobs|career|careers"',
-    category: "Alternative Sources",
+    category: "Broad Searches",
     minTitles: 1,
     description: "Search jobs on .co domains"
   },
   {
     title: ".IO Domain Jobs",
     query: 'site:io {TITLES} "job|jobs|career|careers"',
-    category: "Alternative Sources",
+    category: "Broad Searches",
     minTitles: 1,
     description: "Find positions on .io domains"
   },
   {
     title: "Non-Standard Domains",
     query: '-site:co -site:com -site:io -site:app {TITLES} "job|jobs|career|careers"',
-    category: "Alternative Sources",
+    category: "Broad Searches",
     minTitles: 1,
     description: "Discover jobs on less common domain extensions"
   }

@@ -26,7 +26,7 @@ export const strings = {
     "Finance & Consulting": "Finance & Consulting",
     "Healthcare & Pharma": "Healthcare & Pharma",
     "Creative & Design": "Creative & Design",
-    "Alternative Sources": "Alternative Sources"
+    "Broad Searches": "Broad Searches"
   },
   searches: {     
     "Basic Job Search": "Basic Job Search",

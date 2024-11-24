@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { ChevronDown } from 'lucide-react';
+import { ChevronDown, ChevronRight } from 'lucide-react';
 import { SearchCard } from './SearchCard';
 
 interface Search {
@@ -8,7 +8,6 @@ interface Search {
   category: string;
   minTitles?: number;
   description?: string;
-  layout?: string;
 }
 
 interface CategorySectionProps {
@@ -21,9 +20,12 @@ interface CategorySectionProps {
     categories: { [key: string]: string };
     searches: { [key: string]: string };
   };
+  isAlternativeExpanded: boolean;
+  onAlternativeExpand: (expanded: boolean) => void;
   isMajorPlatformsExpanded: boolean;
   onMajorPlatformsExpand: (expanded: boolean) => void;
   shouldShow: boolean;
+  defaultExpanded?: boolean;
 }
 
 export function CategorySection({ 
@@ -33,18 +35,27 @@ export function CategorySection({
   executeButtonText,
   currentTitlesCount,
   translations,
+  isAlternativeExpanded,
+  onAlternativeExpand,
   isMajorPlatformsExpanded,
   onMajorPlatformsExpand,
-  shouldShow
+  shouldShow,
+  defaultExpanded = false
 }: CategorySectionProps) {
-  const [isOpen, setIsOpen] = useState(category === "Major Job Platforms");
+  const [isOpen, setIsOpen] = useState(defaultExpanded);
+  const [showAllSearches, setShowAllSearches] = useState(false);
   const categorySearches = searches.filter(search => search.category === category);
+  const displayedSearches = category === "Broad Searches" && !showAllSearches
+    ? categorySearches.slice(0, 3)
+    : categorySearches;
 
   useEffect(() => {
-    if (category === "Major Job Platforms") {
+    if (category === "Alternative Sources") {
+      onAlternativeExpand(isOpen);
+    } else if (category === "Major Job Platforms") {
       onMajorPlatformsExpand(isOpen);
     }
-  }, [isOpen, category, onMajorPlatformsExpand]);
+  }, [isOpen, category, onAlternativeExpand, onMajorPlatformsExpand]);
 
   if (!shouldShow) {
     return null;
@@ -55,7 +66,15 @@ export function CategorySection({
   };
 
   return (
-    <section className={`mb-12 transition-opacity duration-500 ${shouldShow ? 'opacity-100' : 'opacity-0'}`}>
+    <section 
+      className={`mb-12 transition-all duration-500 ${
+        shouldShow ? 'opacity-100 transform translate-y-0' : 'opacity-0 transform -translate-y-4'
+      }`}
+      style={{
+        maxHeight: shouldShow ? '2000px' : '0',
+        overflow: 'hidden'
+      }}
+    >
       <div
         onClick={handleToggle}
         className={`flex items-center justify-between bg-white dark:bg-gray-800 p-4 sm:p-6 rounded-xl shadow-md cursor-pointer hover:shadow-lg transition-all duration-300 mb-6 ${
@@ -90,7 +109,7 @@ export function CategorySection({
         }`}
       >
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8">
-          {categorySearches.map((search, index) => (
+          {displayedSearches.map((search, index) => (
             <SearchCard
               key={index}
               title={search.title}
@@ -104,6 +123,23 @@ export function CategorySection({
             />
           ))}
         </div>
+        {category === "Broad Searches" && categorySearches.length > 3 && (
+          <div className="mt-6 text-center">
+            <button
+              onClick={(e) => {
+                e.stopPropagation();
+                setShowAllSearches(!showAllSearches);
+              }}
+              className="inline-flex items-center gap-2 px-4 py-2 text-sm font-medium text-indigo-600 dark:text-indigo-400 hover:text-indigo-800 dark:hover:text-indigo-300 transition-colors duration-200"
+            >
+              {showAllSearches ? (
+                <>Show Less <ChevronDown className="w-4 h-4" /></>
+              ) : (
+                <>Show More <ChevronRight className="w-4 h-4" /></>
+              )}
+            </button>
+          </div>
+        )}
       </div>
     </section>
   );
