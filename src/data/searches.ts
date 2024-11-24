@@ -35,7 +35,6 @@ export const searches: Search[] = [
     query: 'site:apply.workable.com {TITLES}',
     category: "Major Job Platforms",
     minTitles: 1,
-    layout: "list",
     description: "Search across companies using Workable's ATS"
   },
   {
@@ -43,7 +42,6 @@ export const searches: Search[] = [
     query: 'site:jobs.smartrecruiters.com {TITLES}',
     category: "Major Job Platforms",
     minTitles: 1,
-    layout: "list",
     description: "Find positions on SmartRecruiters platform"
   },
   {
@@ -51,7 +49,6 @@ export const searches: Search[] = [
     query: 'site:jobs.breezy.hr {TITLES}',
     category: "Major Job Platforms",
     minTitles: 1,
-    layout: "list",
     description: "Search through Breezy HR's recruiting platform"
   },
   {
@@ -59,7 +56,6 @@ export const searches: Search[] = [
     query: 'site:apply.jobot.com {TITLES}',
     category: "Major Job Platforms",
     minTitles: 1,
-    layout: "list",
     description: "Find jobs posted through JazzHR's ATS"
   },
   {
@@ -67,7 +63,6 @@ export const searches: Search[] = [
     query: 'site:jobs.recruitee.com {TITLES}',
     category: "Major Job Platforms",
     minTitles: 1,
-    layout: "list",
     description: "Search positions on Recruitee's platform"
   },
   {
@@ -75,7 +70,6 @@ export const searches: Search[] = [
     query: 'site:careers.icims.com {TITLES}',
     category: "Major Job Platforms",
     minTitles: 1,
-    layout: "list",
     description: "Find opportunities on iCIMS career sites"
   },
   {
@@ -83,7 +77,6 @@ export const searches: Search[] = [
     query: 'site:bamboohr.com/jobs {TITLES}',
     category: "Major Job Platforms",
     minTitles: 1,
-    layout: "list",
     description: "Search jobs posted through BambooHR"
   },
 
